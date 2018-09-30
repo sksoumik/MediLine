@@ -1,0 +1,2139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>The Software Design Specification Outline</title>
+    <style>
+      .container{
+        width: 75%;
+        margin: auto;
+      }
+
+      body{
+        padding: 10px;
+        font-family: Georgia, serif;
+      }
+      p{
+        text-align: justify;
+        font-size: 16px;
+      }
+      h2{
+        font-size: 26px;
+      }
+
+       h2{
+
+        font-size: 26px;
+
+        text-align: center;
+        color:  #556B2F;
+
+      }
+      img{
+
+        display: block;
+        margin: 0 auto;
+
+      }
+      .container_ex{
+
+       width: 75%;
+        margin: auto;
+
+      }
+      		
+.containerDesign{
+	color: black;
+}
+.containerDesign th h1 {
+	  font-weight: bold;
+	  font-size: 1em;
+  text-align: left;
+  color: #185875;
+}
+
+.containerDesign td {
+	  font-weight: normal;
+	  font-size: 1em;
+  -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+	   -moz-box-shadow: 0 2px 2px -2px #0E1119;
+	        box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.containerDesign {
+	  text-align: left;
+	  overflow: hidden;
+	  width: 80%;
+	  margin: 0 auto;
+  display: table;
+  padding: 0 0 8em 0;
+}
+
+.containerDesign td, .containerDesign th {
+	  padding-bottom: 2%;
+	  padding-top: 2%;
+  padding-left:2%;  
+}
+
+/* Background-color of the odd rows */
+.containerDesign tr:nth-child(odd) {
+	  background-color: #323C50;
+}
+
+/* Background-color of the even rows */
+.containerDesign tr:nth-child(even) {
+	  background-color: #2C3446;
+}
+
+.containerDesign th {
+	  background-color: #1F2739;
+}
+
+.containerDesign td:first-child { color: #FB667A; }
+
+.containerDesign tr:hover {
+   background-color: #464A52;
+-webkit-box-shadow: 0 6px 6px -6px #0E1119;
+	   -moz-box-shadow: 0 6px 6px -6px #0E1119;
+	        box-shadow: 0 6px 6px -6px #0E1119;
+}
+
+.containerDesign td:hover {
+  background-color: #FFF842;
+  color: #403E10;
+  font-weight: bold;
+  
+  box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+  transform: translate3d(6px, -6px, 0);
+  
+  transition-delay: 0s;
+	  transition-duration: 0.4s;
+	  transition-property: all;
+  transition-timing-function: line;
+}
+      
+      
+      
+      
+      
+
+    </style>
+  </head>
+  <body>
+        <div class="container">
+    <h2> 1.0 Introduction</h2>
+    <h3>1.1	Purpose of this document</h3>
+    <p>The purpose of this Design Document is to present the system design of the MEDILINE that can be directly traced to the specific system objective along with providing more detailed data, functional, and technical requirements. This Design Document will verify that the current design meets all of the explicit requirements contained in the actual model as well as the necessary requirements desired by the customer. It also aims to give a more detailed understanding of the design and architecture of the online medication provider – MEDILINE. Topics covered include the following:
+
+  <ul>
+        <li>Class hierarchies and dependencies
+        </li>
+        <li>Context model
+        </li>
+        <li>User interface design
+        </li>
+        <li>Data flow and design
+        </li>
+        <li>Processing narratives
+        </li>
+        <li>Design constraints and restrictions
+        </li>
+        <li>Test cases and expected results </li>
+      </ul>
+ </p>
+
+<h3>1.2	Scope of the development project</h3>
+<p>Primarily, the scope contains the E-Store product features for making online medication provider system project.
+It focuses on the pharmaceutical company, the pharmacist and buyers, which allow for online sales and quick distribution.
+This SRS is also aimed at specifying requirements of software and development of high level learning, user identification
+provider and Artificial intelligence (AI), user friendly interfaces in multiple perform and also maintain a well-developed
+database with vast amount of medications. This system is composed of two main components: a client-side application which will
+run on Android handsets, and a server-side application which will support and interact with various client-side features. The
+system is designed to facilitate the process of purchasing medicines and ensuring quick delivery. It is also designed to
+maximize buyerâ€™s satisfaction by providing genuine product. More specifically, this system is designed to allow user to
+communicate with a group of pharmacists and doctors whenever they need. It facilitates communication between doctors and
+user via E-Mail. User can check their medicineâ€™s expiry date by scanning the productâ€™s barcode.</p>
+
+
+
+<h3>1.3 Definitions, acronyms, and abbreviations</h3>
+
+<p>SDS– Software Design Specification, this document which outlines the requirements that the software must fulfill. </p>
+<p>User – any person who uses the program, with the general circumstance being children ages 6-19 with autism.</p>
+<p>Administrator/Admin– a person who has administrative privilege/access to the system .
+
+</p>
+<p>GUI– graphical user interface. </p>
+<p>Home page-the 1st page that user will see while visiting the application. </p>
+<p>Login Page– the initial page to allow users to register/login .</p>
+<p>Profile- the personal page with all information for each users who have logged in.</p>
+<p>UML– Unified Modeling Language. </p>
+<p>Checkout- the process of buying a desired product after selection.</p>
+<p>Use case- a list of actions or event steps typically defining the interactions between a role (known in the Unified Modeling Language as an actor) and a system to achieve a goal.</p>
+<p>E-store- a form of electronic commerce which allows consumers to directly buy goods or services from a seller over the Internet using a web browser.</p>
+<p>Invoice - a list of goods sent or services provided, with a statement of the sum due for these.</p>
+<p>VAT- Value added tax.</p>
+<p>Customer- a person or organization using the services.</p>
+
+<h3>1.4 References</h3>
+<h3>Books:</h3>
+<p><ul>
+      <li>1.	Software Engineering – Somerville (8th edition)
+      </li>
+      <li>2.	PHP5 Unleashed By John Coggeshall,Sams Publishing.
+      </li>
+      <li>3.	MySQL Building User Interfaces, By Matthew Stucky, New Riders Publishing.
+      </li>
+      <li>4.	PROFESSIONAL JAVA SERVER PROGRAMMING by Subrahmanyam et al.
+      </li>
+
+    </ul></p>
+    <h3>Webpage:</h3>
+    <p><ul>
+          <li>1.	www.mongodb.com
+          </li>
+          <li>2.	www.mysql.com
+          </li>
+          <li>3.	www.php.net
+          </li>
+          <li>4.	www.w3school.com
+          </li>
+          <li>5.	www.wikipedia.com
+          </li>
+          <li>6.	https://laravel.com/
+          </li>
+          <li>7.	https://atom.io/
+          </li>
+          <li>8.	https://www.healthwarehouse.com/pharmacy
+          </li>
+          <li>9.	https://www.walgreens.com/
+          </li>
+          <li>10.	https://www.safemedsdeal.com/
+          </li>
+          
+<h3>1.5 Overview of document</h3>
+
+<p><b>Part 2: Architecture -</b>This section explains the system we're planning to 
+Develop for and on. It explains the relationships and structure of the project. We tried to show our architecture of MEDILINE
+by making a context model.</p>
+
+<p><b>Part 3: Detailed description of Components:</b> This section provides a basic overview of the design procedures
+our system's major components.  The tables will demonstrate more details on each component such as database , class library ,
+server software , server procedure proxy , client software , android client , desktop client etc.</p>
+
+<p><b>Part 4: User Interface Issues:</b> This section will be divided into three main parts: 
+<ul>
+      <li>•	The "User's Information & Registration" Section 
+      </li>
+      <li>•	Shopping Process & Check Out 
+      </li>
+      <li>•	Suggesting Similar Medicines & Sending Notifications For Refill 
+      </li>
+      
+    </ul>
+
+This section describes the process of how to create account, register & order their medicines through the software,
+and also submit pictures or soft copies of their prescriptions. The purpose of this section is to describe how the 
+user interfaces allow those people to do their tasks.</p>
+
+<p><b>Part 5: Execution Architecture-</b> This section determines the real-time and performance behavior of a system.
+It will cover user login, adding medicines to cart, show receipt to cart, show receipt before checkout, storing 
+the list of purchased medicines etc.</p>
+<!--2.0 starts here -->
+
+	<h2>2.0Architecture</h2>
+	<p>The following diagram shows the context model of Mediline</p>
+
+	<div id="context">
+			<img src="img/context model.png" alt="context model">
+	</div>
+
+
+<!--  3.0  starts here -->
+
+    
+
+    <div class="containerDesign">
+
+
+
+<h2> 3.0 Detailed description of components</h2>
+<blockquote>
+	<h3><b>3.1 Component Overview</b></h3>
+</blockquote>
+<blockquote>
+	<p>The following content provides a basic overview of the design procedures our system's major components.&nbsp; The tables will demonstrate more details on each component:</p>
+	<ul>
+		<li><b> 3.2 Database</b>: We will be using MongoDB as 
+		our database software.&nbsp; It will contain tables to represent various 
+		project data and will also show relations beteen each and every table. 
+		</li>
+		<li><b>3.3 Class Library</b>: The Class Library will 
+		be a package of classes common to the Server Software and the Client 
+		Software.&nbsp; The server software will use these class definitions to know 
+		how to store the objects in the database.&nbsp; The client software will use 
+		the class definitions in order to ask for and display the correct 
+		information about each class type.
+		<ul>
+			<li>Project class implements SubTask 
+			</li>
+			<li>ProjectNote class 
+			</li>
+			<li>TimeDetail class 
+			</li>
+			<li>ProjectCost class 
+			</li>
+			<li>Entity class 
+			</li>
+			<li>Employee class extends Entity 
+			</li>
+			<li>Supervisor class extends Employee </li>
+		</ul>
+		</li>
+		
+		<li><b>3.4 Server Software</b>: Our server software 
+		will directly manipulate the contents of the database, based on commands 
+		from the Server Procedure Proxy. 
+		</li>
+		<li><b> 3.5 Server Procedure Proxy</b>: The Server 
+		Procedure Proxy will provide an interface for the clients to request 
+		information or submit updates to the server. 
+		</li>
+		<li><b>Client Software</b>:&nbsp; The Client Software will reside on a 
+		desktop computer and will be also available on android version.&nbsp; Its purpose is to present data to the 
+		user as requested, and provide an interface so that the user can easily 
+		update project information.&nbsp; It will handle conflict resolution 
+		automatically when possible, and otherwise allow the user to choose 
+		which version of an item to keep.
+		<ul>
+		<li><b> 3.6 Android Client</b>: The Android 
+		client will allow the user to view basic information about and make 
+		simple changes to data regarding projects assigned to them. 
+		</li>
+		<li><b> 3.7 Desktop Client</b>: With significantly 
+		more computing power, screen size, and storage space than the 
+		PocketPC, the desktop client will provide more significant 
+		functionality in allowing the user to view and edit project 
+		information. </li>
+		</ul>
+		</li>
+	</ul>
+</blockquote>
+
+<hr>
+<hr>
+
+<blockquote>
+	<h3><a name="3.2">3.2</a> Database</h3>
+	<table id="table12" cellSpacing="2" cellPadding="2" border="1">
+		<tr>
+			<td width="20%"><b>Identification</b></td>
+			<td width="80%">Medicare Web and Android based application</td>
+		</tr>
+		<tr>
+			<td><b>Type</b></td>
+			<td>Module</td>
+		</tr>
+		<tr>
+			<td><b>Purpose</b></td>
+			<td>Provides all kinds of medical and medicine related services through online delivery system and support</td>
+		</tr>
+		<tr>
+			<td><b>Function</b></td>
+			<td>Takes SQL QUERY and UPDATE commands from the server software, 
+			and stores the data according to those commands.</td>
+		</tr>
+		<tr>
+			<td><b>Subordinates</b></td>
+			<td>The database will store data for each type of item in the class 
+			library in tables. 
+			<ul>
+				<li>project 
+				<ul>
+					<li>project_id* 
+					</li>
+					<li>project_no 
+					</li>
+					<li>employee_id 
+					</li>
+					<li>status_cd 
+					</li>
+					<li>customer_id 
+					</li>
+					<li>system_id 
+					</li>
+					<li>application 
+					</li>
+					<li>description 
+					</li>
+					<li>project_purpose 
+					</li>
+					<li>project_tpe 
+					</li>
+					<li>consultant_priority 
+					</li>
+					<li>system_priority 
+					</li>
+					
+					<li>project_use 
+					</li>
+					<li>proj_secs 
+					</li>
+					<li>proj_finish_dt 
+					</li>
+					<li>completed_dt 
+					</li>
+					<li>bill_payment 
+					</li>
+					
+					<li>follows_project_id 
+					</li>
+					<li>paying_entity_id 
+					</li>
+					<li>est_completion_dt 
+					</li>
+					<li>actual_hrs 
+					</li>
+					<li>start_dt 
+					</li>
+					<li>actual_cost 
+					</li>
+					<li>url 
+					</li>
+					<li>project_phase 
+					</li>
+					<li>requested_by 
+					</li>
+					<li>contact_name 
+					</li>
+					<li>s_project_id** 
+					</li>
+					<li>s_db_id** 
+					</li>
+					
+					<li>m_db_id** 
+					</li>
+					<li>muser** 
+					</li>
+					<li>m_dt** 
+					</li>
+					<li>t_db_id** 
+					</li>
+					<li>tuser** 
+					</li>
+					<li>t_dt** </li>
+				</ul>
+				</li>
+				<li>project_note 
+				<ul>
+					<li>project_note_id * 
+					</li>
+					<li>project_id 
+					</li>
+					<li>note_type 
+					</li>
+					<li>note </li>
+				</ul>
+				</li>
+				<li>medicine_item 
+				<ul>
+					<li>med_item_id * 
+					</li>
+					<li>med_id 
+					</li>
+					
+					<li>priority 
+					</li>
+					<li>description 
+					</li>
+					<li>status_cd </li>
+					<li>rating </li>
+					<li>review</li>
+				</ul>
+				</li>
+				<li>project_cost 
+				<ul>
+					<li>project_cost_id* 
+					</li>
+					<li>project_id 
+					</li>
+					<li>line_item 
+					</li>
+					<li>cost_amt 
+					</li>
+					<li>bill_amt 
+					</li>
+					<li>stock_no 
+					</li>
+					<li>employee_id 
+					</li>
+					<li>cost_type 
+					</li>
+					<li>description </li>
+				</ul>
+				</li>
+				<li>timedetail 
+				<ul>
+					<li>timedetail_id * 
+					</li>
+					<li>timedetail_no 
+					</li>
+					<li>employee_id 
+					</li>
+					<li>project_id 
+					</li>
+					<li>user_id 
+					</li>
+					<li>paying_entity_id 
+					</li>
+					<li>check_in_dt 
+					</li>
+					<li>check_out_dt 
+					</li>
+					<li>seconds 
+					</li>
+					<li>comments 
+					</li>
+					<li>bill_yn 
+					</li>
+					<li>status_cd 
+					</li>
+					<li>entry_dt 
+					</li>
+					<li>consultant_priority 
+					</li>
+					<li>client_priority 
+					</li>
+					<li>system_priority 
+					</li>
+					<li>post_no 
+					</li>
+					<li>post_st 
+					</li>
+					<li>post_dt </li>
+				</ul>
+				</li>
+				<li>entity 
+				<ul>
+					<li>entity_id * 
+					</li>
+					<li>c_id 
+					</li>
+					<li>ccode 
+					</li>
+					<li>name 
+					</li>
+					<li>location_1 
+					</li>
+					<li>location_2 
+					</li>
+					<li>street_box 
+					</li>
+					<li>city 
+					</li>
+					<li>state 
+					</li>
+					<li>zipcode 
+					</li>
+					<li>province 
+					</li>
+					<li>country 
+					</li>
+					<li>geocode 
+					</li>
+					<li>birth_dt 
+					</li>
+					<li>status_cd 
+					</li>
+					<li>allowance_hrs </li>
+				</ul>
+				</li>
+				<li>address 
+				<ul>
+					<li>address_id * 
+					</li>
+					<li>entity_id 
+					</li>
+					<li>address_type 
+					</li>
+					<li>name 
+					</li>
+					<li>address_name 
+					</li>
+					<li>location_1 
+					</li>
+					<li>location_2 
+					</li>
+					<li>street_box 
+					</li>
+					<li>city 
+					</li>
+					<li>state 
+					</li>
+					<li>zip 
+					</li>
+					<li>province 
+					</li>
+					<li>country 
+					</li>
+					<li>geocode </li>
+				</ul>
+				</li>
+				<li>employee is an entity 
+				<ul>
+					<li>employee_id * 
+					</li>
+					
+					<li>employee_name 
+					</li>
+					<li>employee_entity_id 
+					</li>
+					<li>def_client_entity_id 
+					</li>
+					<li>employee_uid 
+					</li>
+					<li>supervisor_yn 
+					</li>
+					<li>hour_wage 
+					</li>
+					<li>salary 
+					</li>
+					<li>last_in_dt 
+					</li>
+					<li>timecard_mod_yn 
+					</li>
+					<li>status_cd 
+					</li>
+					<li>scheduled_week_secs </li>
+				</ul>
+				</li>
+				<li>supervisor is an employee 
+				<ul>
+					<li>supervisor_id * 
+					</li>
+					<li>supervisor_employee_id 
+					</li>
+					<li>employee_id 
+					</li>
+					<li>department 
+					</li>
+					<li>supervisor_entity_id 
+					</li>
+					<li>employee_entity_id 
+					</li>
+					<li>status_cd </li>
+				</ul>
+				</li>
+				<li>system 
+				<ul>
+					<li>system_id * 
+					</li>
+					<li>system_cd 
+					</li>
+					<li>manager_entity_id 
+					</li>
+					<li>description 
+					</li>
+					<li>visible_yn </li>
+				</ul>
+				</li>
+				<li>contact is an entity 
+				<ul>
+					<li>contact_id 
+					</li>
+					<li>entity_id 
+					</li>
+					<li>contact_name 
+					</li>
+					<li>contact_type 
+					</li>
+					<li>contact_info </li>
+				</ul>
+				</li>
+			</ul>
+			<p>* table primary key</p>
+			<p>** every table has similar fields for distributed database.</td>
+		</tr>
+		<tr>
+			<td><b>Dependencies</b></td>
+			<td>An administrative user must perform database setup functions and should only modify the structure of tables so that the server 
+			software can store the data as appropriate.&nbsp; </td>
+		</tr>
+		<tr>
+			<td><b>Interfaces</b></td>
+			<td>Apart from administrative setup, all modification of the 
+			database items will be performed by the server 
+			application.&nbsp; Employees can see the items added to carts by the customers and according to the orders they can send the messages to the registered pharmacies.
+
+           
+
+
+
+			</td>
+		</tr>
+		<tr>
+			<td><b>Resources</b></td>
+			<td>The database we are using which will run on a Windows/Unix 
+			based computer. All tables will be created by an administrator (us). 
+			We will use the Ingres interface to manually enter initial data in the following tables: Entity, Address, 
+			Employee, Supervisor, Customers, Registered Pharmacies,
+			System and Contact. Once these are entered, we will use the data 
+			held in these fields as a baseline for our user interface. If time 
+			permits, we may create a GUI which will allow entry of these parts 
+			through our application.<p> Once the server gets a request for 
+			a certain data type from a client it will look up the table that is 
+			associated with the requested object, then parse the restriction 
+			clause and create a valid SQL statement. Once it has generated a 
+			valid SQL statement, the server will connect to the database, 
+			execute the query and get a PHP ResultSet back. At this point, it 
+			will convert the ResultSet to the Object that was requested by the 
+			client and send it back to the client via Sockets and ObjectStreams 
+			over the network. </p>
+			<p>Calls to the database should not take longer than (but should be 
+			much less than) 30 seconds and transfers of the each Object over the 
+			network should not take longer than 1 minute. Conversion of a 
+			ResultSet to a PHP Object should take less than 1 second. Data 
+			retrievals in general should be less than 2MB.</p>
+			<p>A client may also send an updated object to the server, in this 
+			case it will convert to a Set and then do an UPDATE to the database. 
+			This is a basic database call so it should not take longer than 1 
+			second from start to finish.</td>
+		</tr>
+		<tr>
+			<td><b>Processing</b></td>
+			<td><b>SQL QUERY</b> will come from the client in the form of <i>
+			Object</i>.getAll(String(&quot;condition1 = condition2 and condition3 = 
+			condition 4&quot;))<p>For example: Project.getAll(&quot;employee_id = 120 and 
+			status_cd = &quot;CURR&quot;)</p>
+			<p>We will determine the Project class is associated to the project 
+			table in the database and it will generate the following SQL 
+			statement:</p>
+			
+			<p>It will send this to the database and will get a PHP ResultSet. 
+			A ResultSet is easily converted to our object because the column 
+			names in the database will exactly match the fields in our class. 
+			For example, in the database we have project_no and employee_id 
+			columns, in our class Project we have fields project_no and 
+			employee_id.</p>
+			<p><b>SQL UPDATE</b> will come from the client in the form 
+			Object.update();</p>
+			<p>For example: Project.update()</p>
+			<p>We know for Project that the primary key is project_id so we will 
+			create an SQL statement saying:</p>
+			<p>UPDATE project set employee_id = 2, user_id = 2....(all fields) 
+			WHERE project_id = 25; </p>
+			<p>This statement will be sent to the database which will either 
+			update or trigger an exception.</td>
+		</tr>
+		<tr>
+			<td><b>Data</b></td>
+			<td>The data in the database will be filled by the server except for 
+			the cases stated above. We will use valid SQL statements called 
+			within PHP through JDBC to execute these commands. In every case we 
+			will either get a ResultSet (for queries), a working return code or 
+			a SQLException if the command does not work for any reason. We will 
+			handle these exceptions according to their type.</td>
+		</tr>
+	</table>
+</blockquote>
+
+<hr>
+<blockquote>
+	<h3><a name="3.3">3.3</a> Class Library</h3>
+</blockquote>
+<blockquote>
+	<table id="table33" cellSpacing="2" cellPadding="2" border="1">
+		<tr>
+			<td width="20%"><b>Identification</b></td>
+			<td width="80%">ProjectTracker.DataObjects</td>
+		</tr>
+		<tr>
+			<td><b>Type</b></td>
+			<td>Package</td>
+		</tr>
+		<tr>
+			<td><b>Purpose</b></td>
+			<td>Provides data structures for the server and clients.</td>
+		</tr>
+		<tr>
+			<td><b>Function</b></td>
+			<td>This is simply a package of classes.&nbsp; Each class has a&nbsp;set of 
+			accessor and mutator methods as well as logic for retrieving, 
+			inserting, updating, and deleting data from the database.</td>
+		</tr>
+		<tr>
+			<td><b>Subordinates</b></td>
+			<td>The Class Library includes the following classes, all of which 
+			implement the general DataObject interface presented in the <em>
+			Interfaces</em> sub-section:
+			<ul>
+				<li>SubTask interface</li>
+				<li>Project class implements SubTask</li>
+				<li>ActionItem class implements SubTask</li>
+				<li>ProjectNote class&nbsp;</li>
+				<li>TimeDetail class</li>
+				<li>ProjectCost class</li>
+				<li>RegisteredPharmacy class</li>
+				<li>Product class</li>
+				<li>Payment class</li>
+				
+				<li>Entity class</li>
+				<li>Employee class extends Entity</li>
+				<li>Superviser class extends Employee </li>
+			</ul>
+			</td>
+		</tr>
+		<tr>
+			<td><b>Dependencies</b></td>
+			<td>The Server software and the Client software use the class 
+			library to store and retrieve data.&nbsp; The Server software relies on 
+			the database logic being present in every DataObject in order to 
+			load and store data from the database.</td>
+		</tr>
+		<tr>
+			<td height="98"><b>Interfaces</b></td>
+			<td height="98">All classes in the class library will implement the 
+			abstract class (or interface) DataObject, which has the following 
+			interface:<blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+				DataObject&nbsp;implements Serializable<br>
+				{</span></p>
+				<blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+					<p dir="ltr" style="MARGIN-RIGHT: 0px"><span class="q">
+					private boolean dirty;<br>
+					private int id;<br>
+					</span>private DateTime downloadDate;<br>
+					private DateTime uploadDate;<br>
+					<br>
+				<p dir="ltr" style="MARGIN-RIGHT: 0px"><!--startfragment--><span class="q">
+					public boolean isDirty ();<br>
+					public DateTime getDownloadDate();<br>
+					public DateTime getUploadDate();<br>
+					<span class="q"><br>
+					private static HashMap fieldToColumn;<br>
+					<br>
+					public static List getAll (Connection conn, String filter);<br>
+					public static void put (Connection conn, DataObject obj);<br>
+					public static void delete (Connection conn, int id);<br>
+					protected static String makeSqlWhereClause (String filter);</span></p>
+				</blockquote>
+				<p dir="ltr" style="MARGIN-RIGHT: 0px"><span class="q">}</span>
+				</p>
+			</blockquote>
+			<p dir="ltr" style="MARGIN-RIGHT: 0px">All DataObjects are 
+			Serializable so that they can easily be marshalled over the network 
+			by the server as well as saved to disk on the client.&nbsp; In addition, 
+			each DataObject will have its set of PHPBean-like accessor and 
+			mutator methods.&nbsp; The clients will use these methods for presenting 
+			and manipulating DataObjects; they will also use the isDirty, 
+			getDownloadDate, and getUploadDate methods to perform 
+			synchronization with the server.&nbsp; The server will use the static 
+			methods getAll, put, and delete to load and store data for this 
+			DataObject to and from the database.&nbsp; The makeSqlWhereClause method 
+			and the fieldToColumn field will be used in the getAll, put, and 
+			delete methods to parse filter clauses passed from the server 
+			application and dynamically create the corresponding SQL WHERE 
+			clause.</td>
+		</tr>
+		<tr>
+			<td><b>Resources</b></td>
+			<td> Laravel framework for the back-end server side scripting and HTML5, CSS3, BootStrap and PHPScript</td>
+		</tr>
+		<tr>
+			<td><b>Processing</b></td>
+			<td>A detailed description of the DataObject's layout is presented 
+			in the <em>Interfaces</em> sub-section.</td>
+		</tr>
+		<tr>
+			<td><b>Data</b></td>
+			<td>A detailed description of the DataObject's layout is presented 
+			in the <em>Interfaces</em> sub-section.</td>
+		</tr>
+	</table>
+</blockquote>
+
+<hr>
+<blockquote>
+	<blockquote>
+		<h4 align="left"><a name="3.3.1">3.3.1</a> SubTask</h4>
+		<table id="table23" cellSpacing="2" cellPadding="2" border="1">
+			<tr>
+				<td width="20%"><b>Identification</b></td>
+				<td width="80%">ProjectTracker.DataObjects.SubTask</td>
+			</tr>
+			<tr>
+				<td><b>Type</b></td>
+				<td>Interface</td>
+			</tr>
+			<tr>
+				<td><b>Purpose</b></td>
+				<td>Supertype for action items and sub-projects.&nbsp; Both are 
+				considered &quot;sub-tasks&quot; of a project.</td>
+			</tr>
+			<tr>
+				<td><b>Function</b></td>
+				<td>Simply a Laravel interface that provides a contract for action 
+				items and sub-projects.&nbsp; Allows the GUI to categorize both as 
+				sub-tasks of a project.</td>
+			</tr>
+			<tr>
+				<td><b>Subordinates</b></td>
+				<td>ActionItem, Project.</td>
+			</tr>
+			<tr>
+				<td><b>Dependencies</b></td>
+				<td>The GUI will make use of this interface while interacting 
+				with action items and sub-projects.</td>
+			</tr>
+			<tr>
+				<td><b>Interfaces</b></td>
+				<td>
+				<p dir="ltr" style="MARGIN-RIGHT: 0px">Classes that implement 
+				SubTask also implement DataObject.&nbsp; In addition to the usual 
+				DataObject interface, classes that implement SubTask&nbsp;will 
+				have&nbsp;methods and fields for getting and setting the name, 
+				responsible person, and status&nbsp;of the sub-task.</td>
+			</tr>
+			<tr>
+				<td><b>Resources</b></td>
+				<td>None.</td>
+			</tr>
+			<tr>
+				<td><b>Processing</b></td>
+				<td>None.</td>
+			</tr>
+			<tr>
+				<td><b>Data</b></td>
+				<td>N/A</td>
+			</tr>
+		</table>
+	</blockquote>
+</blockquote>
+<hr>
+<blockquote>
+	<blockquote>
+		<h4 align="left"><a name="3.3.2">3.3.2</a> Project</h4>
+		<table id="table24" cellSpacing="2" cellPadding="2" border="1">
+			<tr>
+				<td width="20%"><b>Identification</b></td>
+				<td width="80%">ProjectTracker.DataObjects.Project</td>
+			</tr>
+			<tr>
+				<td><b>Type</b></td>
+				<td>Class</td>
+			</tr>
+			<tr>
+				<td><b>Purpose</b></td>
+				<td>Represents a project and encapsulates all necessary data 
+				for&nbsp;a project.</td>
+			</tr>
+			<tr>
+				<td><b>Function</b></td>
+				<td>A project has the following data items.&nbsp; These are the 
+				column names as defined in the database schema, but the object 
+				may have different field names.&nbsp; Also, each field will be 
+				accessed and mutated via Laravel.<!--startfragment--><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+					<ul>
+						<li>project_id 
+						</li>
+						<li>project_no 
+						</li>
+						<li>employee_id 
+						</li>
+						<li>status_cd 
+						</li>
+						<li>user_id 
+						</li>
+						<li>system_id 
+						</li>
+						<li>application 
+						</li>
+						<li>description 
+						</li>
+						<li>project_purpose 
+						</li>
+						<li>project_tpe 
+						</li>
+						<li>consultant_priority 
+						</li>
+						<li>system_priority 
+						</li>
+						<li>release_version 
+						</li>
+						<li>secs_total 
+						</li>
+						<li>project_use 
+						</li>
+						<li>proj_secs 
+						</li>
+						<li>proj_finish_dt 
+						</li>
+						<li>completed_dt 
+						</li>
+						<li>bill_yn 
+						</li>
+						<li>master_project_id 
+						</li>
+						<li>follows_project_id 
+						</li>
+						<li>paying_entity_id 
+						</li>
+						<li>est_completion_dt 
+						</li>
+						<li>actual_hrs 
+						</li>
+						<li>start_dt 
+						</li>
+						<li>actual_cost 
+						</li>
+						<li>url 
+						</li>
+						<li>project_phase 
+						</li>
+						<li>requested_by 
+						</li>
+						<li>contact_name 
+						</li>
+						<li>s_project_id 
+						</li>
+						<li>s_db_id 
+						</li>
+						<li>suser 
+						</li>
+						<li>m_db_id 
+						</li>
+						<li>muser 
+						</li>
+						<li>m_dt 
+						</li>
+						<li>t_db_id 
+						</li>
+						<li>tuser 
+						</li>
+						<li>t_dt</li>
+					</ul>
+				</blockquote>
+				</td>
+			</tr>
+			<tr>
+				<td><b>Subordinates</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+			<tr>
+				<td><b>Dependencies</b></td>
+				<td>Being a DataObject and SubTask, this class relies on those 
+				interface definitions.</td>
+			</tr>
+			<tr>
+				<td><b>Interfaces</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+			<tr>
+				<td><b>Resources</b></td>
+				<td>None.</td>
+			</tr>
+			<tr>
+				<td><b>Processing</b></td>
+				<td>None.</td>
+			</tr>
+			<tr>
+				<td><b>Data</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+		</table>
+	</blockquote>
+</blockquote>
+<hr>
+
+<blockquote>
+	<blockquote>
+		<h4 align="left"><a name="3.3.3">3.3.3</a> ActionItem</h4>
+		<table id="table25" cellSpacing="2" cellPadding="2" border="1">
+			<tr>
+				<td width="20%"><b>Identification</b></td>
+				<td width="80%">ProjectTracker.DataObjects.ActionItem</td>
+			</tr>
+			<tr>
+				<td><b>Type</b></td>
+				<td>Class</td>
+			</tr>
+			<tr>
+				<td><b>Purpose</b></td>
+				<td>Represents a project and encapsulates all necessary data 
+				for&nbsp;an action item.</td>
+			</tr>
+			<tr>
+				<td><b>Function</b></td>
+				<td>An action item has the following data items.&nbsp; These are the 
+				column names as defined in the database schema, but the object 
+				may have different field names.&nbsp; Also, each field will be 
+				accessed and mutated via Laravel.<!--startfragment--><ul>
+					<li>proj_item_id </li>
+					<li>project_id </li>
+					<li>line_item </li>
+					<li>priority </li>
+					<li>description </li>
+					<li>status_cd</li>
+				</ul>
+				</td>
+			</tr>
+			<tr>
+				<td><b>Subordinates</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+			<tr>
+				<td><b>Dependencies</b></td>
+				<td>Being a DataObject and SubTask, this class relies on those 
+				interface definitions.</td>
+			</tr>
+			<tr>
+				<td><b>Interfaces</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+			<tr>
+				<td><b>Resources</b></td>
+				<td>None.</td>
+			</tr>
+			<tr>
+				<td><b>Processing</b></td>
+				<td>None.</td>
+			</tr>
+			<tr>
+				<td><b>Data</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+		</table>
+		</font>
+	</blockquote>
+</blockquote>
+<hr>
+<font size="2">
+
+<blockquote>
+	<blockquote>
+		<h4 align="left"><a name="3.3.4">3.3.4</a> ProjectNote</h4>
+		<table id="table26" cellSpacing="2" cellPadding="2" border="1">
+			<tr>
+				<td width="20%"><b>Identification</b></td>
+				<td width="80%">ProjectTracker.DataObjects.ProjectNote</td>
+			</tr>
+			<tr>
+				<td><b>Type</b></td>
+				<td>Class</td>
+			</tr>
+			<tr>
+				<td><b>Purpose</b></td>
+				<td>Represents a project and encapsulates all necessary data 
+				for&nbsp;a project note.</td>
+			</tr>
+			<tr>
+				<td><b>Function</b></td>
+				<td>A project note has the following data items.&nbsp; These are the 
+				column names as defined in the database schema, but the object 
+				may have different field names.&nbsp; Also, each field will be 
+				accessed and mutated via PHP methods.<!--startfragment--><blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+					<ul>
+						<li>project_note_id 
+						</li>
+						<li>project_id 
+						</li>
+						<li>note_type 
+						</li>
+						<li>note</li>
+					</ul>
+				</blockquote>
+				</td>
+			</tr>
+			<tr>
+				<td><b>Subordinates</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+			<tr>
+				<td><b>Dependencies</b></td>
+				<td>Being a DataObject, this class relies on that interface 
+				definition.</td>
+			</tr>
+			<tr>
+				<td><b>Interfaces</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+			<tr>
+				<td><b>Resources</b></td>
+				<td>None.</td>
+			</tr>
+			<tr>
+				<td><b>Processing</b></td>
+				<td>None.</td>
+			</tr>
+			<tr>
+				<td><b>Data</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+		</table>
+	</blockquote>
+</blockquote>
+
+<hr>
+
+<blockquote>
+	<blockquote>
+		<h4 align="left"><a name="3.3.5">3.3.5</a> TimeDetail</h4>
+		<table id="table27" cellSpacing="2" cellPadding="2" border="1">
+			<tr>
+				<td width="20%"><b>Identification</b></td>
+				<td width="80%">ProjectTracker.DataObjects.TimeDetail</td>
+			</tr>
+			<tr>
+				<td><b>Type</b></td>
+				<td>Class</td>
+			</tr>
+			<tr>
+				<td><b>Purpose</b></td>
+				<td>Represents a project and encapsulates all necessary data 
+				for&nbsp;a time detail.</td>
+			</tr>
+			<tr>
+				<td><b>Function</b></td>
+				<td>A time detail has the following data items.&nbsp; These are the 
+				column names as defined in the database schema, but the object 
+				may have different field names.&nbsp; Also, each field will be 
+				accessed and mutated via PHP methods.&nbsp;<!--startfragment--><ul>
+					<li>timedetail_id 
+					</li>
+					<li>timedetail_no 
+					</li>
+					<li>employee_id 
+					</li>
+					<li>project_id 
+					</li>
+					<li>user_id 
+					</li>
+					<li>paying_entity_id 
+					</li>
+					<li>check_in_dt 
+					</li>
+					<li>check_out_dt 
+					</li>
+					<li>seconds 
+					</li>
+					<li>comments 
+					</li>
+					<li>bill_yn 
+					</li>
+					<li>status_cd 
+					</li>
+					<li>entry_dt 
+					</li>
+					<li>consultant_priority 
+					</li>
+					<li>client_priority 
+					</li>
+					<li>system_priority 
+					</li>
+					<li>post_no 
+					</li>
+					<li>post_st 
+					</li>
+					<li>post_dt</li>
+				</ul>
+				</td>
+			</tr>
+			<tr>
+				<td><b>Subordinates</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+			<tr>
+				<td><b>Dependencies</b></td>
+				<td>Being a DataObject, this class relies on that interface 
+				definition.</td>
+			</tr>
+			<tr>
+				<td><b>Interfaces</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+			<tr>
+				<td><b>Resources</b></td>
+				<td>None.</td>
+			</tr>
+			<tr>
+				<td><b>Processing</b></td>
+				<td>None.</td>
+			</tr>
+			<tr>
+				<td><b>Data</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+		</table>
+	</blockquote>
+</blockquote>
+<hr>
+
+<blockquote>
+	<blockquote>
+		<h4 align="left"><a name="3.3.6">3.3.6</a> ProjectCost</h4>
+		<table id="table28" cellSpacing="2" cellPadding="2" border="1">
+			<tr>
+				<td width="20%"><b>Identification</b></td>
+				<td width="80%">ProjectTracker.DataObjects.ProjectCost</td>
+			</tr>
+			<tr>
+				<td><b>Type</b></td>
+				<td>Class</td>
+			</tr>
+			<tr>
+				<td><b>Purpose</b></td>
+				<td>Represents a project and encapsulates all necessary data 
+				for&nbsp;a project cost.</td>
+			</tr>
+			<tr>
+				<td><b>Function</b></td>
+				<td>A project cost has the following data items.&nbsp; These are the 
+				column names as defined in the database schema, but the object 
+				may have different field names.&nbsp; Also, each field will be 
+				accessed and mutated via PHP methods.&nbsp;<!--startfragment--><ul>
+					<li>project_cost_id 
+					</li>
+					<li>project_id 
+					</li>
+					<li>line_item 
+					</li>
+					<li>cost_amt 
+					</li>
+					<li>bill_amt 
+					</li>
+					<li>stock_no 
+					</li>
+					<li>employee_id 
+					</li>
+					<li>cost_type 
+					</li>
+					<li>description</li>
+				</ul>
+				</td>
+			</tr>
+			<tr>
+				<td><b>Subordinates</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+			<tr>
+				<td><b>Dependencies</b></td>
+				<td>Being a DataObject, this class relies on that interface 
+				definition.</td>
+			</tr>
+			<tr>
+				<td><b>Interfaces</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+			<tr>
+				<td><b>Resources</b></td>
+				<td>None.</td>
+			</tr>
+			<tr>
+				<td><b>Processing</b></td>
+				<td>None.</td>
+			</tr>
+			<tr>
+				<td><b>Data</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+		</table>
+	</blockquote>
+</blockquote>
+<hr>
+
+<blockquote>
+	<blockquote>
+		<h4 align="left"><a name="3.3.7">3.3.7</a> Entity</h4>
+		<table id="table29" cellSpacing="2" cellPadding="2" border="1">
+			<tr>
+				<td width="20%"><b>Identification</b></td>
+				<td width="80%">ProjectTracker.DataObjects.Entity</td>
+			</tr>
+			<tr>
+				<td><b>Type</b></td>
+				<td>Class</td>
+			</tr>
+			<tr>
+				<td><b>Purpose</b></td>
+				<td>Represents a project and encapsulates all necessary data 
+				for&nbsp;an entity.</td>
+			</tr>
+			<tr>
+				<td><b>Function</b></td>
+				<td>An entity has the following data items.&nbsp; These are the 
+				column names as defined in the database schema, but the object 
+				may have different field names.&nbsp;<ul>
+					<li>entity_id 
+					</li>
+					<li>c_id 
+					</li>
+					<li>ccode 
+					</li>
+					<li>name 
+					</li>
+					<li>location_1 
+					</li>
+					<li>location_2 
+					</li>
+					<li>street_box 
+					</li>
+					<li>city 
+					</li>
+					<li>state 
+					</li>
+					<li>zipcode 
+					</li>
+					<li>province 
+					</li>
+					<li>country 
+					</li>
+					<li>geocode 
+					</li>
+					<li>birth_dt 
+					</li>
+					<li>status_cd 
+					</li>
+					<li>allowance_hrs</li>
+				</ul>
+				</td>
+			</tr>
+			<tr>
+				<td><b>Subordinates</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+			<tr>
+				<td><b>Dependencies</b></td>
+				<td>As a DataObject, this class relies on that interface 
+				definition.</td>
+			</tr>
+			<tr>
+				<td><b>Interfaces</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+			<tr>
+				<td><b>Resources</b></td>
+				<td>None.</td>
+			</tr>
+			<tr>
+				<td><b>Processing</b></td>
+				<td>None.</td>
+			</tr>
+			<tr>
+				<td><b>Data</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+		</table>
+	</blockquote>
+</blockquote>
+<hr>
+
+<blockquote>
+	<blockquote>
+		<h4 align="left"><a name="3.3.8">3.3.8</a> Employee</h4>
+		<table id="table30" cellSpacing="2" cellPadding="2" border="1">
+			<tr>
+				<td width="20%"><b>Identification</b></td>
+				<td width="80%">ProjectTracker.DataObjects.Employee</td>
+			</tr>
+			<tr>
+				<td><b>Type</b></td>
+				<td>Class</td>
+			</tr>
+			<tr>
+				<td><b>Purpose</b></td>
+				<td>Represents a project and encapsulates all necessary data 
+				for&nbsp;an employee.</td>
+			</tr>
+			<tr>
+				<td><b>Function</b></td>
+				<td>An employee has the following data items.&nbsp; These are the 
+				column names as defined in the database schema, but the object 
+				may have different field names.&nbsp;<ul>
+					<li>employee_id 
+					</li>
+					<li>employee_no 
+					</li>
+					<li>employee_name 
+					</li>
+					<li>employee_entity_id 
+					</li>
+					<li>def_client_entity_id 
+					</li>
+					<li>employee_uid 
+					</li>
+					<li>supervisor_yn 
+					</li>
+					<li>hour_wage 
+					</li>
+					<li>salary 
+					</li>
+					<li>last_in_dt 
+					</li>
+					<li>timecard_mod_yn 
+					</li>
+					<li>status_cd 
+					</li>
+					<li>scheduled_week_secs</li>
+				</ul>
+				</td>
+			</tr>
+			<tr>
+				<td><b>Subordinates</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+			<tr>
+				<td><b>Dependencies</b></td>
+				<td>As a DataObject, this class relies on that interface 
+				definition.&nbsp; As an instance of&nbsp;Entity, this class relies on 
+				that class definition.</td>
+			</tr>
+			<tr>
+				<td><b>Interfaces</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+			<tr>
+				<td><b>Resources</b></td>
+				<td>None.</td>
+			</tr>
+			<tr>
+				<td><b>Processing</b></td>
+				<td>None.</td>
+			</tr>
+			<tr>
+				<td><b>Data</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+		</table>
+	</blockquote>
+</blockquote>
+
+<hr>
+
+<blockquote>
+	<blockquote>
+		<h4 align="left"><a name="3.3.9">3.3.9</a>&nbsp;Supervisor</h4>
+		<table id="table31" cellSpacing="2" cellPadding="2" border="1">
+			<tr>
+				<td width="20%"><b>Identification</b></td>
+				<td width="80%">ProjectTracker.DataObjects.Supervisor</td>
+			</tr>
+			<tr>
+				<td><b>Type</b></td>
+				<td>Class</td>
+			</tr>
+			<tr>
+				<td><b>Purpose</b></td>
+				<td>Represents a project and encapsulates all necessary data 
+				for&nbsp;a supervisor.</td>
+			</tr>
+			<tr>
+				<td><b>Function</b></td>
+				<td>A supervisor has the following data items.&nbsp; These are the 
+				column names as defined in the database schema, but the object 
+				may have different field names.&nbsp;<ul>
+					<li>supervisor_id 
+					</li>
+					<li>supervisor_employee_id 
+					</li>
+					<li>employee_id 
+					</li>
+					<li>department 
+					</li>
+					<li>supervisor_entity_id 
+					</li>
+					<li>employee_entity_id 
+					</li>
+					<li>status_cd</li>
+				</ul>
+				</td>
+			</tr>
+			<tr>
+				<td><b>Subordinates</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+			<tr>
+				<td><b>Dependencies</b></td>
+				<td>As a DataObject, this class relies on that interface 
+				definition.&nbsp; As an instance of Employee, this class relies on 
+				that class definition.</td>
+			</tr>
+			<tr>
+				<td><b>Interfaces</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+			<tr>
+				<td><b>Resources</b></td>
+				<td>None.</td>
+			</tr>
+			<tr>
+				<td><b>Processing</b></td>
+				<td>None.</td>
+			</tr>
+			<tr>
+				<td><b>Data</b></td>
+				<td>Defined in the <em>Function</em> sub-section.</td>
+			</tr>
+		</table>
+	</blockquote>
+</blockquote>
+
+<hr>
+
+</blockquote>
+<hr>
+<blockquote>
+	<h3 align="left"><a name="3.5">3.5</a> Server Software</h3>
+</blockquote>
+<blockquote>
+	<table id="table13" cellSpacing="2" cellPadding="2" border="1">
+		<tr>
+			<td width="20%"><b>Identification</b></td>
+			<td width="80%">ProjectTracker.Server</td>
+		</tr>
+		<tr>
+			<td><b>Type</b></td>
+			<td>Subprogram, package</td>
+		</tr>
+		<tr>
+			<td height="30"><b>Purpose</b></td>
+			<td height="30">The server program will run on the same machine as 
+			(or at least have access to) the database engine.&nbsp; It is the program 
+			that the client applications connect to and communicate with to 
+			retrieve and synchronize project data&nbsp;and to&nbsp;run reports.</td>
+		</tr>
+		<tr>
+			<td><b>Function</b></td>
+			<td>The server continuously listens on a known port for client 
+			connections.&nbsp; It creates a new thread to handle each connection.</td>
+		</tr>
+		<tr>
+			<td><b>Subordinates</b></td>
+			<td>The server will rely on the class library outlined above.</td>
+		</tr>
+		<tr>
+			<td><b>Dependencies</b></td>
+			<td>The server depends on the database engine.&nbsp; It relies on the 
+			implementation of the DataObject classes in the class library.&nbsp; The 
+			client applications rely on the server to retrieve and synchronize 
+			project data and to run reports.</td>
+		</tr>
+		<tr>
+			<td><b>Interfaces</b></td>
+			<td>The server will listen on a predefined TCP/IP port.&nbsp; It will 
+			coordinate with the Server Procedure Proxy (which sits on the client 
+			side) and use PHP's ObjectStream along with the serializable 
+			DataObjects in the class library to pass information across the 
+			network.&nbsp; There are two basic methods that the server will expose:<blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+				<p>List getAll (Class type, String filter);</p>
+				<p>void put (DataObject obj, DateTime ifOlderThan);</p>
+			</blockquote>
+			<p dir="ltr">The first method will retrieve from the database all 
+			DataObjects of the given type and with the given filter string 
+			applied.&nbsp; A filter string has the exact same syntax and semantics as 
+			a SQL WHERE clause, except the object's field names are used instead 
+			of column names.&nbsp; The second method inserts the given DataObject 
+			into the database on the condition that the object which is 
+			currently stored in the database is older than the ifOlderThan 
+			parameter.</td>
+		</tr>
+		<tr>
+			<td><b>Resources</b></td>
+			<td>As previously mentioned, the server will use the TCP/IP network protocol, 
+			relying on PHP's Socket and ServerSocket classes to do this.&nbsp; It 
+			also relies on PHP's ObjectStream class and PHP's serialization 
+			mechanism.</td>
+		</tr>
+		<tr>
+			<td><b>Processing</b></td>
+			<td>The exposed methods are described in the <em>Interfaces</em> 
+			sub-section.</td>
+		</tr>
+		<tr>
+			<td><b>Data</b></td>
+			<td>The server uses the Ingres database engine to store data, and is 
+			ignorant to the specific logic utilized to load, store, and 
+			manipulate the data.&nbsp; The server acts only as a communication device 
+			between the clients and the database.</td>
+		</tr>
+	</table>
+</blockquote>
+
+<hr>
+<blockquote>
+	<h3 align="left"><a name="3.6">3.6</a> Server Procedure Proxy</h3>
+</blockquote>
+<blockquote>
+	<table id="table14" cellSpacing="2" cellPadding="2" border="1">
+		<tr>
+			<td width="20%"><b>Identification</b></td>
+			<td width="80%">ProjectTracker.ServerProcedureProxy</td>
+		</tr>
+		<tr>
+			<td><b>Type</b></td>
+			<td>Package, class</td>
+		</tr>
+		<tr>
+			<td><b>Purpose</b></td>
+			<td>Manages communication with the server on the client side.&nbsp; Hides 
+			all the network specifics from the client code.&nbsp; Exposes a simple 
+			API to call the methods that the server exposes.</td>
+		</tr>
+		<tr>
+			<td><b>Function</b></td>
+			<td>The server procedure proxy class implements the communication 
+			protocol with the server.&nbsp; It knows how to connect to and 
+			communicate with the server.&nbsp; It marshals data over the network 
+			using PHP's serialization mechanism.</td>
+		</tr>
+		<tr>
+			<td><b>Subordinates</b></td>
+			<td>The server procedure proxy will rely on the class library.</td>
+		</tr>
+		<tr>
+			<td><b>Dependencies</b></td>
+			<td>Client applications will use this class to retrieve and 
+			synchronize project data with the server.&nbsp; The server will rely 
+			on the clients utilizing this class for this purpose, since the 
+			server and the server procedure proxy agree in terms of the 
+			communication protocol.</td>
+		</tr>
+		<tr>
+			<td><b>Interfaces</b></td>
+			<td>The server procedure proxy simply exposes the methods offered by 
+			the server to the client.&nbsp; These are:&nbsp;<p>&nbsp;</p>
+			<blockquote dir="ltr" style="MARGIN-RIGHT: 0px">
+				<p>List getAll (Class type, String filter);</p>
+				<p>void put (DataObject obj, DateTime ifOlderThan);</p>
+			</blockquote>
+			<p dir="ltr">The first method will retrieve from the database all 
+			DataObjects of the given type and with the given filter string 
+			applied.&nbsp; A filter string has the exact same syntax and semantics as 
+			a SQL WHERE clause, except the object's field names are used instead 
+			of column names.&nbsp; The second method inserts the given DataObject 
+			into the database on the condition that the object which is 
+			currently stored in the database is older than the ifOlderThan 
+			parameter.</td>
+		</tr>
+		<tr>
+			<td><b>Resources</b></td>
+			<td>As mentioned, the server procedure proxy will use the TCP/IP 
+			network protocol, relying on PHP's Socket and ServerSocket classes 
+			to do this.&nbsp;</td>
+		</tr>
+		<tr>
+			<td><b>Processing</b></td>
+			<td>The exposed methods are described in the <em>Interfaces</em> 
+			sub-section.</td>
+		</tr>
+		<tr>
+			<td><b>Data</b></td>
+			<td>The server procedure proxy will use the class library to 
+			encapsulate data.&nbsp; These will be passed over the network to and from 
+			the server.&nbsp; The server is free to use whatever mechanism it chooses 
+			to store the data on its side.</td>
+		</tr>
+	</table>
+</blockquote>
+
+<hr>
+
+
+<hr>
+<blockquote>
+	<h3 align="left"><a name="3.8">3.7</a> Desktop Client </h3>
+</blockquote>
+<blockquote>
+	<table id="table16" cellSpacing="2" cellPadding="2" border="1">
+		<tr>
+			<td width="20%"><b>Identification</b></td>
+			<td width="80%">Desktop Client</td>
+		</tr>
+		<tr>
+			<td><b>Type</b></td>
+			<td>User Interface</td>
+		</tr>
+		<tr>
+			<td><b>Purpose</b></td>
+			<td>Provide the user access to project data stored locally or on a 
+			database.</td>
+		</tr>
+		<tr>
+			<td><b>Function</b></td>
+			<td>
+			<ul>
+				<li>Logs the user into the system, and attempts to connect to a 
+				specified project server using the Server Procedure Proxy.</li>
+				<li>When possible, downloads any new&nbsp;or modified projects&nbsp;from 
+				the specified server, and uploads any changes that have been 
+				made locally since the last successful server connection.&nbsp;&nbsp;In 
+				some cases, there may be conflicts&nbsp;between local and remote 
+				project data, and the&nbsp;Desktop client will provide a means for 
+				conflict resolution through user interaction.</li>
+				<li>Allows the user to see a list of their projects, which 
+				consists of those downloaded and those created by the user 
+				locally.&nbsp; Allows the user to create new projects. 
+				</li>
+				<li>Allows the user to inspect and change&nbsp;a specified project's 
+				data. 
+				</li>
+				<li>Allows a user to report times and costs associated with a 
+				project</li>
+			</ul>
+			</td>
+		</tr>
+		<tr>
+			<td><b>Subordinates</b></td>
+			<td>To see the general structure of the Desktop Client,&nbsp;see the 
+			flow diagram in 7.1.2.<p>1) The Login Screen - provides a level of 
+			security for the project data</p>
+			<ul>
+				<li>Inputs 
+				<ul>
+					<li>User Name 
+					</li>
+					<li>Password 
+					</li>
+					<li>Server Settings</li>
+				</ul>
+				</li>
+				<li>Outputs 
+				<ul>
+					<li>Status of the login attempt 
+					</li>
+					<li>Presents the next form based on connection status and 
+					server authentication</li>
+				</ul>
+				</li>
+			</ul>
+			<p>2)&nbsp;The Projects Overview Screen - Shows the user projects which 
+			are assigned to him or her and provides access to other screens.</p>
+			<ul>
+				<li>Inputs 
+				<ul>
+					<li>The new task that a user wants to do.&nbsp; The choices are 
+					Time/Cost Entry, New Project, and Modify Project. 
+					</li>
+					<li>In the case of Modify Project, a highlighted entry in 
+					the Projects List is an input.</li>
+				</ul>
+				</li>
+				<li>Outputs 
+				<ul>
+					<li>Displays the Project Maintenance Screen if the user 
+					chooses either New Project or Modify Project 
+					</li>
+					<li>Displays the Time/Cost Entry Screen if the user chooses 
+					Time/Cost Entry</li>
+				</ul>
+				</li>
+			</ul>
+			<p>3) The Project Maintenance Screen - Shows details related to the 
+			project and provides means for modifying them.</p>
+			<ul>
+				<li>Inputs 
+				<ul>
+					<li>Any data related to the selected project 
+					</li>
+					<li>Ability to request the creation of new Action Items, 
+					Costs, or notes 
+					</li>
+					<li>Ability to request the saving of modified items</li>
+				</ul>
+				</li>
+				<li>Outputs 
+				<ul>
+					<li>All data related to the selected project 
+					</li>
+					<li>The Action Items, Costs, and Notes&nbsp;which have been 
+					created for this project</li>
+				</ul>
+				</li>
+			</ul>
+			<p>4) The Time/Cost Entry Screen - Allows the user to report on 
+			their activities and costs related to a project</p>
+			<ul>
+				<li>Inputs 
+				<ul>
+					<li>Start Time 
+					</li>
+					<li>End Time 
+					</li>
+					<li>Project 
+					</li>
+					<li>Cost 
+					</li>
+					<li>Comment</li>
+				</ul>
+				</li>
+				<li>Outputs - None</li>
+			</ul>
+			</td>
+		</tr>
+		<tr>
+			<td><b>Dependencies</b></td>
+			<td>This component will interact closely with the&nbsp;Server Procedure 
+			Proxy&nbsp;for the retrieval of project data.&nbsp;&nbsp;The&nbsp;gui will create and 
+			pass around&nbsp;an instance of the Server Procedure Proxy class&nbsp;and use 
+			it to&nbsp;get and put data on the server.&nbsp; Such server calls will be 
+			synchronous, so there will be no timing issues for the PocketPC 
+			client to consider.<p>The&nbsp;Desktop Client will use&nbsp;various 
+			data&nbsp;classes found in the Class Library.&nbsp; Data from the Server 
+			Procedure Proxy will be packaged into one of these classes, and the 
+			Desktop Client can then access that data through the public methods 
+			of the appropriate class.&nbsp; These classes also provide the Desktop 
+			Client with a handy way to save the data locally (as do all PHP 
+			classes).</td>
+		</tr>
+		<tr>
+			<td><b>Interfaces</b></td>
+			<td>The Desktop Client uses Swing classes&nbsp;for&nbsp;interaction with the 
+			user.&nbsp; The screen formats for these windows are shown in section 
+			7.2.<p>Uses the Server Procedure Proxy for interaction with a 
+			server.&nbsp; For more information on the Server Procedure Proxy see 
+			section 3.6.</td>
+		</tr>
+		<tr>
+			<td><b>Resources</b></td>
+			<td>The&nbsp;Desktop Client will not have any significantly CPU- or 
+			memory-intensive tasks--however, normal overhead associated with 
+			Swing components is to be expected in both cases.<p>Much of the 
+			project data to be queried will be accessed on a remote database.</td>
+		</tr>
+		<tr>
+			<td><b>Processing</b></td>
+			<td>Some psuedocode related to the application can be found here.&nbsp;</td>
+		</tr>
+		<tr>
+			<td><b>Data</b></td>
+			<td>A project list kept on the disk as a serialized List of Project 
+			objects, loaded into memory in the same format.&nbsp; Such a list will of 
+			course initially be empty. 
+			<p>Associated project data kept on the disk as a serialized List of 
+			Objects, of any of several formats, loaded into&nbsp;memory in the same 
+			format.&nbsp; Initially empty.</p>
+			<p>A list of user names and passwords encrypted on disk using 
+			PHPx.crypto.</td>
+		</tr>
+	</table>
+</blockquote>
+
+    	
+    </div>
+
+
+
+<!--3.0 Detailed description of components ends here (More contents will be added later) -->
+
+
+     <!--  4.0  Starts Here -->
+
+<h2> 4.0 User Interface Issues </h2>
+
+    <p> The user interface of the Project Tracker will be divided into Two main sections: </p>
+    <p> 4.1 The "User's Information & Registration" Section </p>
+    <p> 4.2 Shopping Process & Check Out </p>
+    <p> 4.3 Suggesting Similar Medicines & Sending Notifications For Refill </p>
+
+    <p> These tools will allow the various users to to create account, register & order their medicines through the software,
+        and also submit pictures or soft copies of their precribtions .  The personas described in the SRS
+        represent the types of people who will use the app as users - and the purpose
+        of this section is to describe how the user interfaces allow those people to do their tasks.
+	</p>
+
+<h2> 4.1 The "User's Information & Registration" Section  </h2>
+
+     <p> This application will be used by general people as well as the people
+         related with pharmacies & medicines.
+	</p>
+
+     <p> It will have the following basic layout: </p>
+
+<h3> 1. Login Screen </h3>
+     <p> This first screen will allow users to login to their existed account.
+	     User using this app for the very first time hs to create their account
+		 from the Ceate New Account Screen
+	 </p>
+
+<h3> 2. Create New Account Screen </h3>
+     <p> This screen allows A new user to put necessary information about himself & to create
+	     his own personal account for free.
+	 </p>
+
+     <!--  4.0 Will Still Continue Again From From Here Starting With 4.2 -->
+
+<h2> 4.2 Shopping Process & Check Out </h2>
+      <p> This part of the interface deals with the shopping process & also the checkout section.
+          It also deals with the VAT & delivary charges depending on the User's location
+	  </p>
+
+<h3> 1. Medicines List Screen </h3>
+      <p> This screen shows the users the medicines that they can order via online.
+	  </p>
+
+
+<h3> 2. Add To Cart </h3>
+      <p> By selecting the medicines the user want to purchase those medicines will be automatically added to the shopping cart.
+          The quantity can be changed by the user himself.
+	  </p>
+
+<h3> 3. Check Out Screen </h3>
+      <p> This screen will show the user the total cost of the medicines including the VAT & the receipt of the purchase also
+          include the delivery charge based on the user's location which he used to register his account.
+	  </p>
+
+<h3> 4. Purchase Successful Screen </h3>
+      <p> This screen will appear after the user press the check out & confirms his crat.
+          There will be a dialogue box showing the user that the purchase was successful.
+	  </p>
+
+     <!--  4.0 Will Still Continue Again From From Here Starting With 4.3 -->
+
+
+<h2> 4.3 Suggesting Similar Medicines & Sending Notifications For Refill </h2>
+
+     <p> This section will have options for the user to submit his prescribtion & also suggest him similar medicines
+         if the medicine the user is looking for is out of stock.
+         This section will also store the user's previous purchase order & keep track of it.
+         It will send a sms or notification to the user if he wants to again order medicines.
+	 </p>
+
+<h3> 1. Suggesting Similar Medicines </h3>
+     <p> If there's a situation where a medicine is out of stock & the user needs that medicine, the application will
+         suggest him a similar medicine with "Same Generic Name" to use as an alternative
+	 </p>
+
+<h3> 2. Submitting Prescribtion Screen </h3>
+
+     <p> A User can use this feature to upload his prescribtion to store it into the database of the application.
+         This will help the user to keep track of his prescribtion even if he somehow lost it or it gets damaged
+	 </p>
+
+<h3> 3. Notification Screen </h3>
+     <p> This lets any user to know if his medicines are about to be consumed based on his purchase order.
+         This will let the user know if he needs to refill his medicines again.
+		 The use of Artificial intelligence is used here for this purpose.
+	 </p>
+
+
+<!--4.0 User Interface Issues ENDS HERE  -->
+
+     <h2></h2>
+     <h2> 4.4 User Interfaces For each USE CASE </h2>
+
+      <h3> USE CASE 01: View Home Page </h3>
+
+      <img img src="img/image 01.png" style="width:100%">
+
+      <h3> USE CASE 02: Log in into the system </h3>
+
+      <img img src="img/image 02.jpg" style="width:40%">
+
+      <h3> USE CASE 03: Create New Profile </h3>
+
+      <img img src="img/image 03.png" style="width:80%" >
+
+
+      <h3> USE CASE 04: Edit Profile: </h3>
+
+
+      <img  img src="img/image 04.png" style="width:20%">
+
+
+      <h3> USE CASE 05: Delete Profile </h3>
+
+      <img  img src="img/image 05.jpg" style="width:50%">
+
+      <h3> USE CASE 06: Change password </h3>
+
+      <img img src="img/image 06.png" style="width:40%">
+
+      <h3> USE CASE 07: View Notice-Board </h3>
+
+      <img img src="img/image 07.jpg" style="width:50%">
+
+      <h3> USE CASE 08: Manage Users </h3>
+
+      <img img src="img/image 08.jpg" style="width:60%" >
+
+
+      <h3> USE CASE 09: Guest View </h3>
+
+
+      <img  img src="img/image 09.png" style="width:60%">
+
+
+      <h3> USE CASE 10: Product Search Result </h3>
+
+      <img  img src="img/image 10.jpg" style="width:80%">
+
+      <h3> USE CASE 11: Product Recommendation </h3>
+
+      <img img src="img/image 11.png" style="width:70%">
+
+      <h3> USE CASE 12: Invoice Page </h3>
+
+      <img img src="img/image 12.png" style="width:70%">
+
+      <h3> USE CASE 13: Check-out page </h3>
+
+      <img img src="img/image 13.jpg" style="width:70%" >
+
+
+      <h3> USE CASE 14: Live Chat </h3>
+
+
+      <img  img src="img/image 14.png" style="width:80%">
+
+
+      <h3> USE CASE 15: New Arrival </h3>
+
+      <img  img src="img/image 15.jpg" style="width:50%">
+
+
+      <!-- 4 ends here -->
+
+
+
+      <!--5 starts here -->
+
+<h2>5.0 Execution Architecture </h2>
+
+<p> The execution architecture determines largely the real-time and performance behaviour
+of a system .This is small part of the total system architecture .</p>
+
+<h3> " Runtime Environment  and processes " </h3>
+
+<p> As soon as a software program is executed, it is in a runtime state.
+In this state we have several query like User Log in ,User's Prescription Submission ,
+Adding Medicines To Cart ,Show Receipt Before Checkout, Adding VAT & Delivery cost with
+total,Storing The List of Purchased Medicines, Storing The List of Purchased Medicines etc.</p>
+
+<h3> User Login </h3>
+
+<p> User can log in by creating simple account or without creating an account (as guest) . </p>
+
+<h3> Adding Medicines To Cart  </h3>
+
+<p> Whenever a customer select medicine it will save to the cart ,
+from there they also can delete .</p>
+
+<h3> Show Receipt Before Checkout (Adding VAT & Delivery cost with total)</h3>
+
+<p> A selecting all of the medicine system will show total
+amount with vat and delivery charge.</p>
+
+<h3> Storing The List of Purchased Medicines </h3>
+<p> All types of information will save to our database so if a user log in 2nd time to order then can
+have similar types suggestion and they don’t need to put their delivery address over and over again </p>
+
+
+        <!-- End of Execution Architecture -->
+
+<h2>Design decisions and tradeoffs</h2>
+<p>
+	our goal is to make a system that works rather than look beautiful. That being said we aim to make an UI that’s user friendly and modern. Also, we wanted to make our architecture easy and not too complicated for the sake of easy implementation, as we are short on time. Also, we plan to use a chat box that users can interact. As of now we will only enable some default replies and add more functionality later on. For android app we are only going to give the option to search or pharmacies and medicines. We are not going implement order option in the android app just yet. As a result, users will only be able to look for nearby pharmacies that have the medicines the user searched for. This will be based on android built in GPS system not some custom-built module. So, the accuracy will be around 10 meters or so.
+</p>
+
+
+</div>
+  </body>
+</html>

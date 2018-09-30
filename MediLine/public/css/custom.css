@@ -1,0 +1,61 @@
+.navbar {
+    background: #fff;
+    border-bottom: #c6c6c6 1px solid; }
+  
+  #home-section {
+    background: #28328c;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 400px;
+    margin-bottom: 50PX; }
+    #home-section .home-inner {
+      padding-top: 150px; }
+  
+  #home-med-section {
+    margin-top: 60px;
+    margin-bottom: 10px; }
+    #home-med-section img {
+      margin-top: -100px; }
+  
+  #about-us {
+    margin: 30px; }
+  
+  #main-footer {
+    background: #28328c;
+    color: white; }
+  
+  @media (max-width: 576px) {
+    nav .container {
+      width: 100%; } }
+.navbar {
+  background: #fff;
+  border-bottom: #c6c6c6 1px solid; }
+
+#home-section {
+  background: #28328c;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 400px;
+  margin-bottom: 50PX; }
+  #home-section .home-inner {
+    padding-top: 150px; }
+
+#home-med-section {
+  margin-top: 60px;
+  margin-bottom: 10px; }
+  #home-med-section img {
+    margin-top: -100px; }
+
+#about-us {
+  margin: 30px; }
+
+#main-footer {
+  background: #28328c;
+  color: white; }
+
+@media (max-width: 576px) {
+  nav .container {
+    width: 100%; 
+  } 
+  }
+  

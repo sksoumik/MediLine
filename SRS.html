@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Software Requirements Specification</title>
+    <style>
+      .container{
+        width: 75%;
+        margin: auto;
+      }
+
+      body{
+        padding: 10px;
+        font-family: Georgia, serif;
+      }
+      p{
+        text-align: justify;
+        font-size: 16px;
+      }
+      h2{
+        font-size: 26px;
+      }
+      img{
+        float: right;
+      }
+       h2{
+
+        font-size: 26px;
+
+        text-align: center;
+        color:  #556B2F;
+
+      }
+      img{
+
+        display: block;
+        margin: 0 auto;
+
+      }
+      .container_ex{
+
+       width: 75%;
+        margin: auto;
+
+      }
+
+    </style>
+
+  </head>
+  <body>
+
+    <div class="container">
+
+        <h2> Table of Contents </h2>
+      <ol>
+          <li> Introduction
+              <ol>
+                <li> 1.1 Purpose</li>
+                <li> 1.2 Document Conventions</li>
+                <li> 1.3 Intended Audience and Reading Suggestions</li>
+                <li> 1.4 Project Scope</li>
+                <li> 1.5 Reference</li>
+              </ol>
+          </li>
+          <li> Overall Description
+              <ol>
+                <li> 2.1 Product Perspective</li>
+                <li> 2.2 Product Funtions</li>
+                <li> 2.3 User Characteristics</li>
+                <li> 2.4 Constraints</li>
+                <li> 2.5 Documentations</li>
+                <li> 2.6 Assumption and Dependencies</li>
+              </ol>
+          </li>
+          <li> External Interface Requirements User Interfaces</li>
+          <li> Features
+              <ol>
+                <li> 4.1 Personal User Account</li>
+                <li> 4.2 Friendly User Interface</li>
+                <li> 4.3 Home Delivary System</li>
+                <li> 4.4 User's Ability To Check Expirity Date Of The Medicine</li>
+                <li> 4.5 Selecting Medicines From Different Supplier Companies</li>
+                <li> 4.6 Easy Return Process</li>
+                <li> 4.7 Cash On Delivery</li>
+                <li> 4.1.0 Key Features</li>
+                <li> 4.1.1 : Suggesting Medicines with Similar “Generic Names”</li>
+                <li> 4.1.2 : 24/7 User Support Availability</li>
+                <li> 4.1.3 : Use Of Artificial Intelligence(AI)</li>
+              </ol>
+          </li>
+          <li> Non Funtional Requirements
+              <ol>
+                <li> 5.1 safety</li>
+                <li> 5.2 Security</li>
+                <li> 5.3 Usability</li>
+                <li> 5.4 Capacity</li>
+                <li> 5.5 Availability</li>
+              </ol>
+          </li>
+
+
+      </ol>
+
+      <h2>1.0. INTRODUCTION: </h2>
+          <p>The introduction of the Software Requirements Specification (SRS) provides an overview of the entire SRS with purpose, document conventions, project scope, definitions, acronyms, abbreviations, references and overview of the SRS. The aim of this document is to gather and analyze and give an in-depth insight of the complete Online Medication Provider System by defining the problem statement in detail.
+          </p>
+
+
+        <h2>1.1 Purpose:</h2>
+        <p>The purpose of this document is to present a detailed description of the Online Medication Provider System - MEDLINE. It will explain the purpose and features of the system , the interfaces of the system, what the system will do , which process it will deliver the medication to customers and how the system will be beneficial for them. It will also explain system constraints and various interfaces as well as offer a preliminary glimpse of the software application’s user interface (UI). This document will also cover various other technical dependencies.</p>
+
+
+        <h2>1.2 Document Conventions:</h2>
+        <p>
+          This document follows MLA Format. Bold faced text has been used to emphasize section and subsection headings. Highlighting is to point out words in the glossary and big font bold text is
+  Used to label and recognize diagrams.
+
+
+        </p>
+        <h2>1.3 Intended Audience and Reading Suggestions:</h2>
+        <p>
+          This document is intended for all individuals participating in group project. Readers interested in a brief overview of the product should focus on the rest of Part 1 (Introduction), as well as Part 2 of the document (Overall Description), which provide a brief overview of each aspect of the project as a whole.
+
+   Readers who wish to explore the features of Medline in more detail should read on to Part 3 (External Interface Requirements) which offers further technical details, including information on the user interface as well as the hardware and software platforms on which the application will run. Part 4 (System Features) expands upon the information laid out in the main overview.
+
+   Readers interested in the non-technical aspects of the project should read Part 5, which covers
+  Performance, safety, security, and various other attributes that will be important to users.
+  Readers who have not found the information they are looking for should check Part 6 (Other
+  Requirements), which includes any additional information which does not fit logically into the
+  Other sections.
+  </p>
+<h2>1.4 Project Scope: </h2>
+  <p>Primarily, the scope contains the E-Store product features for making online medication provider system project.  It focuses on the pharmaceutical company, the pharmacist and buyers, which allow for online sales and quick distribution.
+
+  This SRS is also aimed at specifying requirements of software and development of high level learning, user identification provider and Artificial intelligence (AI), user friendly interfaces in multiple perform and also maintain a well-developed database with vast amount of medications. This system is composed of two main components: a client-side application which will run on Android handsets, and a server-side application which will support and interact with various client-side features. The system is designed to facilitate the process of purchasing medicines and ensuring quick delivery. It is also designed to maximize buyer’s satisfaction by providing genuine product.
+  More specifically, this system is designed to allow user to communicate with a group of pharmacists and doctors whenever they need. It facilitates communication between doctors and user via E-Mail. User can check their medicine’s expiry date by scanning the product’s barcode.
+   </p>
+<h2>1.5 Reference:</h2>
+  <p>  IEEE Std 830-1998 IEEE Recommended Practice for Software Requirements Specifications. IEEE Computer Society, 1998.</p>
+
+
+
+    <!--overall description begins from here -->
+    <h2>2. Overall Description</h2>
+    <p>
+      The goal of this section is to give a complete overview of the entire system.
+      In this section, we’ll see how the system interacts with the users and other systems that were required to make it work.
+      It’ll also describe the functionalities, assumptions, dependencies, and constraints of MediLine.
+    </p>
+
+    <h2>2.1 Product perspective</h2>
+    <p>
+      MediLine is the first ever online shop for medicine in Bangladesh. With this system, users will be able to sell or buy medicine from the comfort of their home.
+      There will be two main type of users.
+      Buyers and Selles. Buyers are the general people who wish to buy medicine. And sellers are the one who will be constantly updating their collection of medicine.
+      After the completion of registration, buyers will have the option to search for medicine.
+      If they don’t find the one they are looking for, the system will recommend similar types of medicine for him/her.
+      Sellers are essentially the owners/employee of a pharmacy. When they log in, they will be able to upload images and description of the medicine they have.
+      These images and descriptions will be saved in a database.
+      Later when the search for a certain medicine, the system will search through the database and tell the user whether it’s available or not.
+      There will also, be a mobile version of MediLine. Users can search and order for medicine via this app.
+      Both the mobile app and website will share the same database.
+      The mobile application might not work properly if the hardware is weak For the mobile application, users will be able to search for medicine and nearby pharmacies that provide it. Users are required to fill up certain inputs. Based on the inputs a list of (or map view) pharmacies will be shown on the screen. If the searched item is not available the system will retrieve recommended items from the database and show it on the screen.
+      For the website. After users log in to the system. They will be greeted with some suggestions based on their previous search (none if it’s the first time). They can either choose from that list or start a new search. After each search, nearby pharmacies will be shown in the list with the availability of that specific medicine. The user then can easily order by filling up an order form.
+      After each order, a notification will be sent to the owner of the pharmacy which was selected when the user filled up the form. Then a representative form that specific pharmacy will make the delivery to the user.
+      orm that specific pharmacy will make the delivery to the user.
+    </p>
+
+    <h2>2.2 Product functions</h2>
+    <p>
+      For the mobile application, users will be able to search for medicine and nearby pharmacies that provide it. Users are required to fill up certain inputs. Based on the inputs a list of (or map view) pharmacies will be shown on the screen. If the searched item is not available the system will retrieve recommended items from the database and show it on the screen.
+    </p>
+    <p>
+      For the website. After users log in to the system. They will be greeted with some suggestions based on their previous search (none if it’s the first time). They can either choose from that list or start a new search. After each search, nearby pharmacies will be shown in the list with the availability of that specific medicine. The user then can easily order by filling up an order form.
+    </p>
+    <p>
+      After each order, a notification will be sent to the owner of the pharmacy which was selected when the user filled up the form. Then a representative form that specific pharmacy will make the delivery to the user.
+    </p>
+
+      <img src="img/Diagram.png" alt="">
+      <h2>2.3 User characteristics</h2>
+      <p>
+        There will be 3 types of users who can use the system. They are the following.
+          <ul>
+            <li>General users</li>
+            <li>Owners of Pharmacies</li>
+            <li>Administrators</li>
+          </ul>
+        <p>
+          General users can use both the website and mobile app. However, they cannot order via the mobile app. They can only search for items and see nearby pharmacies who have that item/s.
+        </p>
+        <p>
+          Pharmacy owners can only use the web app. They can upload images along with a description of a medicine and a number count of that item. Based on these items general users will get to know if an item is available or not.
+        </p>
+        <p>
+          Administrators are the actual owner/ admin of the entire system. They can pretty much do everything. They can add data, delete data or edit data based on the requirement. The admins can manage/modify information for both users and pharmacies.
+        </p>
+      </p>
+
+      <h2>2.4 Constraints</h2>
+      <p>
+        The mobile application is constrained by the system interface to the GPS navigation of the hardware. As different manufacturers can make GPS, people will more likely to face inconsistent interface. Based on the device Interface can differ also.
+      </p>
+      <p>
+        Internet connection is also required for all type of users except the admin/s. With an internet connection, the users cannot log in to the system. So, they cannot interact with the system without internet.
+      </p>
+      <p>
+        Another constraint is data capacity. As we are not using our own data center, we are might face issue with capacity.
+      </p>
+
+
+    <h2> 2.5 Documentations</h2>
+      <p>N/A</p>
+    <h2>2.6 Assumptions and dependencies</h2>
+    <p>
+      Our main assumption and a matter of worry is, as we are using third party  AI to show customized result to the users, we might find that AI to be incompatible with our system. Or we might not be able to implement all the features related to AI correctly.
+    </p>
+    <p>
+      Another assumption is that as we are using the same database for both the mobile app and web app. We might find some conflicts and unwanted crashes while using the app.
+    </p>
+    <p>
+      Although Laravel is a really powerful framework, we might find some compatibility issue with the AI and the framework.
+    </p>
+
+ </div>
+
+    <!--External interface starts here-->
+    <div  class="container_ex">
+     <h2>3.External Interface Requirements</h2>
+     <h2> User Interfaces</h2>
+      <h3>Top Dropdown Menu:</h3>
+      <p>This dropdown menu will include all the features and services we are going to provide through our web application. This menu going to help customers find any services easily. This may look like this:</p>
+
+      <img class="mySlides" src="img/image001.png" style="width:100%">
+      <p>When customer will click or hover over the drop down menu they will see all the categories of services.
+
+         </p>
+
+         <!--Search box-->
+
+      <h3>Search Box</h3>
+      <p>Searching any items/services form the site which will reduce the time of customers to get something easily and efficiently. A sub category menu will also be added below the search box, by that a customer can custom his/her search like the image of below:</p>
+
+      <img class="mySlides" src="img/image003.png" style="width:100%">
+
+       <!--End here-->
+
+        <!--Search box-->
+
+      <h3>Help Pop Up</h3>
+      <p>Whenever a customer will enter the website/app, a pop up will show up heading “Need any help?” Where a customer can contact with our employees and can seek for help.</p>
+
+      <img class="mySlides" src="img/image004.png" style="width:10%" >
+      <p>Whenever the customer will click this button, a contact form will show up like below:</p>
+      <img class="mySlides" src="img/image005.png" style="width:30%">
+      <p>Customer can also attach file with the contact form.</p>
+
+       <!--End here-->
+
+        <!-- Login and Sign up Button:-->
+
+      <h3> Login and Sign up Button:</h3>
+      <p>New users can sign up and open account to stay connected with the site and to get all new product’s/service’s notifications. Once a user signed up, all of his/her information will be kept saved, so that a user doesn’t need to give his physical address, email and other information again and again.
+
+A user can also sign up with his/her social media accounts like Facebook, twitter etc.</p>
+
+      <img class="mySlides" src="img/image007.png" style="width:40%" >
+
+
+       <!--End here-->
+
+
+        <!--  Medicine Suggestion: -->
+
+      <h3>  Medicine Suggestion: </h3>
+      <p>If any user can’t find any particular medicine, then our site will give auto suggestion to the customer of similar type of medicine he/she can buy from other supplier. E.g. If the business holder has shortage of Napa, then it will suggest to buy ACE.</p>
+
+
+
+
+       <!--End here-->
+
+
+        <!--  Customer Review: -->
+
+      <h3>Customer Reviews: </h3>
+      <p>A customer can review a product, can give stars out five according to the service or product quality, customer can also write a review login in by their accounts like below:</p>
+          <img class="mySlides" src="img/image008.png" style="width:60%" >
+
+
+
+
+
+       <!--End here-->
+
+
+       <!--  Add to Cart -->
+
+      <h3>Add to Cart </h3>
+      <p>Customers can add multiple items to their carts and shop them all together. On the side bar, site will show the total prizes and the amount of items in the cart has already been added.</p>
+          <img class="mySlides" src="img/image010.png" style="width:45%" >
+
+
+
+
+
+       <!--End here-->
+
+        <!--Hardware Interface -->
+
+        <h2> Hardware Interfaces</h2>
+        <p>This web application is going to be compatible with all operating systems. User can use any operating systems to access the web app, it can be Windows, Linux or any other Operating systems. Doesn’t need any special PC or mobile configuration to run this application.  Since the application must run over the internet, all the hardware shall require to connect internet will be hardware interface for the system. As for e.g. Modem, WAN – LAN, Ethernet Cross-Cable.</p>
+
+
+
+        <!--ends here-->
+
+        <!--Software Interface -->
+
+        <h2> Software Interfaces</h2>
+        <p>As it is an internet based web application, user doesn’t need to install any other specific software for running this program. This application must allow users to complete secured transactions like paying bills through internet. A user can sign up using their social media accounts, but it is not mandatory or the only option to complete the task, if they want, they can also use their email for sign up. However, the android version of this application will run all the version of Android 4.0. Ice Cream Sandwich and all the other later versions. </p>
+
+      <center>
+      <strong >Tools / Library / Framework / Languages :</strong> </br>
+
+          Database: MySQL </br>
+
+          Server side scripting:  Laravel </br>
+
+          Front-End: HTML5, CSS3, JavaScript, React.JS, Bootstrap etc. </br>
+     </center>
+
+
+        <!--ends here-->
+
+         <!--Communication Interface -->
+
+        <h2> Communication Interfaces</h2>
+        <p>When a user will sign up and provide his information that will be saved in our databases and according to that information like house address, cell number, email address will be used for further communications. This program will use HTTPs for ensuring a secure communication through internet. Encryption algorithms will be used to transfer data according to protect its safety. As long as the algorithm is sufficiently sophisticated, no one lacking the key can decrypt the data.  Maximum data transfer rate will be ensured through a secured connection and maximum available in local areas.  PHP socket functions will be used to ensure all IPv4, IPv6, local communication protocol family. </p>
+
+
+
+
+
+        <!--Communication Interface ends here-->
+
+
+
+
+
+
+     </div>
+   <!--3. External Interface Requirements ends here-->
+
+
+
+
+
+      <h2> 4.0 Features : </h2>
+          // overall features begins from here
+
+     <h2> 4.1 : Personal User Account </h2>
+
+          <p> User can create his/her personal account through which he/she can order for medicines.
+              This will allow the application to keep track of the user & also help him in further reminders.
+              Users can also sign up via gmail & facebook accounts </p>
+
+
+    <h2>  4.2 : Friendly User Interface </h2>
+
+           <p> The user interface is very easy to use. Users with very little knowledge on android phone can also use it.</p>
+
+    <h2> 4.3 : Home Delivary System </h2>
+          <p> Medicines are delivered to the client's house via home delivary system. Therefore, a patient can easily get his medicine whenever they want.
+    Only the delivery charge is needed. </p>
+
+    <h2> 4.4 : User's Ability To Check Expirity Date Of The Medicine </h2>
+
+         <p> The user can check weather the medicine is expired or not via online. He doesn't have to worry about the expirity date of the medicine being expired. </p>
+
+    <h2> 4.5 : Selecting Medicines From Different Supplier Companies </h2>
+
+         <p> User can select similar types of medicine from different suppliers. For example : if a user needs paracitamol, he can order (a) Napa or (b) Ace or (c) Ace plus or (d) Napa Extra.
+      So, user has full control over the medicine he needs & can chose from many similar catagories. </p>
+
+     <h2> 4.6 : Easy Return Process </h2>
+        <p> If the medicine is damaged, the user can return the medicine and doesn't have to pay for it.
+            This facility provides a user with mental satisfaction towards the medicine provider. </p>
+
+      <h2> 4.7 : Cash On Delivery </h2>
+           <p> User can order a medicine & also pay after the delivary.
+                This allows the user to double check his orders & see if he is getting the right medicine or not. </p>
+
+    <h2> 4.1.0 Key Features </h2>
+    // special features and usage of artificial intelligence begins from here
+
+     <h2>  4.1.1 : Suggesting Medicines with Similar “Generic Names” </h2>
+           <p> The user will be suggested with the similar "Generic Name" medicines.
+               For example : Ibuprofen(generic name) is used for reating pain, fever, and inflammation
+               and has  medicines like "Inflam" as order(in the user's prescription) but there's no "Influm" is stock.
+               So, the app will suggest similar medicines like "Influm"
+               which are "Reumafen" or "Neoflam" for the patient. </p>
+
+     <h2> 4.1.2 : 24/7 User Support Availability </h2>
+           <p> User can order any time or day for medicine.
+               There's always someone for user's support.
+               So, if & when the user calls for any information he can get technical support
+               from our service center. </p>
+
+    <h2>   4.1.3 : Use Of Artificial Intelligence(AI) </h2>
+           <p> This will allow the user to send his prescription via mail or picture which will be stored in database.
+               The app will automatically send a sms or mail to the patient if he forgets to refill his medicine after a
+               certain amount of time. This is where the usage of Artificial Intelligence will come to play. </p>
+
+               <h2>5.0 Non Funtional Requirements </h2>
+
+
+
+<h2> 5.1:  safety</h2>
+<p>
+All of our product is 100% safe . There is no chance to be fake .
+ We ensure all of our customer with healthy products .
+ </p>
+
+<h2> 5.2 Security </h2>
+<p>
+ Our security issue is very well .
+ We don’t keep any personal informations of our customers .
+ As our payment system is like cash in delivery  , so customer can pay us after checking their product .
+ After getting their product if they feel that they don’t need some of the products then we have 100% refund policy .
+ so, Anyone one can visit our website and bus whatever they like without any hesitation .
+ </p>
+
+ <h2>5.3 Usability</h2>
+
+ <p>
+ Our website is totally add-free ,simple and very easy to use .
+ It has wonderful guidance ,so user don’t need to worry about what to do next .
+ Users will be very comfortable to use it .
+ </p>
+
+ <h2>5.4 Capacity</h2>
+ <p>
+ Our website capacity is pretty much high .
+ About 5 thousands people can access at a time .
+ </p>
+
+ <h2>5.5 Availability</h2>
+ <p>
+ This website will be available 24/7 ,day and night .
+ Visitors won’t get any error while visiting our website and there is no broken link
+ so, visitor can freely browse without any 404 error .
+ Anyone can order our product  any-time .
+ Our dedicated delivery stuffs are always ready to go.
+ </p>
+
+
+
+
+  </body>
+</html>
